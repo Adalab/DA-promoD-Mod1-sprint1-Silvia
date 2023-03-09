@@ -1,10 +1,21 @@
 USE `sportsanalytics`;
 
+/*
+Cuando intentamos introducir los datos en la tabla stats obtenemos el error 1452. Parece indicar que uno de los valores que intentamos incluir como foreign key
+no existe en la tabla a la que referencia y parece indicar un problema en seasons. Creamos un programa en python que nos indica que todos los datos de teams
+son correctos y que efectivamente aparece un id no presente en seasons que se repite frecuentemente. Con esta información y los datos que tenemos, ese id
+parece corresponder a la temporada 2018-2019, que falta en nuestros datos. Al ser un dato frecuente decidimos no eliminar esos registros, pues eliminaríamos
+demasiada información de la base de datos; sin embargo, no podemos asumir a qué temporada corresponde ese id y la introducimos en la base de datos como
+"unknown" a la espera de una respuesta por parte de nuestro contacto en Sports Analytics. Una vez tomada esta decisión, introducimos los datos en las tablas 
+y continuamos nuestras consultas.
+*/
+
 INSERT INTO `season` (`SEASON_ID`, `SEASON`)
 VALUES (140409122677552, "2020-2021"),
 (140409122677808, "2019-2020"),
 (140409122678320, "2017-2018"),
-(140409122678576, "2016-2017");
+(140409122678576, "2016-2017"),
+(140409122678064, "unknown");
 
 INSERT INTO `teams`(`TEAM_ID`, `TEAM`)
 VALUES (140409122658096,	"Atlanta Hawks"),
